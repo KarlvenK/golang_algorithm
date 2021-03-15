@@ -29,6 +29,29 @@ func quickSort(data Interface, a, b, maxDepth int) {
 	maxDepth--
 	mlo, mhi := doPivot(data, a, b)
 	// data[a..mlo] <= data[pivot] < data[mhi..b]
+	if mlo-a < b-mhi {
+		quickSort(data, a, mlo, maxDepth)
+		a = mhi
+	} else {
+		quickSort(data, mhi, b, maxDepth)
+		b = mlo
+	}
+	if b-a > 1 {
+		for i := a + 6; i < b; i++ {
+			if data.Less(i, i-6) {
+				data.Swap(i, i-6)
+			}
+		}
+		insertionSort(data, a, b)
+	}
+}
+
+func insertionSort(data Interface, a, b int) {
+	for i := a + 1; i < b; i++ {
+		for j := i; j > a && data.Less(j, j-1); j-- {
+			data.Swap(j, j-1)
+		}
+	}
 }
 
 func doPivot(data Interface, lo, hi int) (midlo, midhi int) {
@@ -102,7 +125,7 @@ func doPivot(data Interface, lo, hi int) (midlo, midhi int) {
 	return b - 1, c
 }
 
-func medianOfThree(data Interface, m1, m0, m2 int) {
+func medianOfThree(data Interface, m1, m0, m2 int) { //sort the three members
 	if data.Less(m1, m0) {
 		data.Swap(m1, m0)
 	}
@@ -114,6 +137,39 @@ func medianOfThree(data Interface, m1, m0, m2 int) {
 	}
 }
 
-func heapSort(data Interface, a, b int) {
+func siftDown(data Interface, lo, hi, first int) {
+	root := lo
+	for {
+		child := 2*root + 1
+		if child >= hi {
+			break
+		}
 
+		if child+1 < hi && data.Less(first+child, first+child+1) {
+			child++
+		}
+		if !data.Less(first+root, first+child) {
+			return
+		}
+		data.Swap(first+root, first+child)
+		root = child
+	}
+}
+
+func heapSort(data Interface, a, b int) {
+	first := a
+	lo := 0
+	hi := b - a
+	for i := (hi - 1) / 2; i >= 0; i-- {
+		siftDown(data, i, hi, first)
+	}
+
+	for i := hi - 1; i >= 0; i-- {
+		siftDown(data, i, hi, first)
+	}
+
+	for i := hi - 1; i >= 0; i-- {
+		data.Swap(first, first+1)
+		siftDown(data, lo, i, first)
+	}
 }
