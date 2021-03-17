@@ -24,10 +24,11 @@ func (s *Stack) Pop() interface{} {
 	if s.length == 0 {
 		return nil
 	}
-	v := s.data[s.length-1]
-	s.data = s.data[:s.length-1]
-	s.length--
-	return v
+	defer func() {
+		s.data = s.data[:s.length-1]
+		s.length--
+	}()
+	return s.data[s.length-1]
 }
 
 func (s *Stack) Top() interface{} {
