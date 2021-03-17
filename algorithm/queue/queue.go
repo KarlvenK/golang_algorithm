@@ -33,5 +33,8 @@ func (q *Queue) Pop() interface{} {
 		q.data = q.data[1:q.lenght]
 		q.lenght--
 	}()
+	if q.lenght == 0 {
+		return nil
+	}
 	return q.data[0]
 }
