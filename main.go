@@ -1,7 +1,7 @@
 package main
 
 import (
-	"algorithm/algorithm"
+	"algorithm/algorithm/sort"
 	"fmt"
 	"math/rand"
 	"time"
@@ -33,7 +33,7 @@ func testSort() {
 	}
 
 	fmt.Println(arr[:30])
-	algorithm.Sort(intSlice(arr)) // we do sort here
+	sort.Sort(intSlice(arr)) // we do sort here
 
 	if checkSort(arr) {
 		fmt.Println("ok")
@@ -52,6 +52,11 @@ func checkSort(arr intSlice) bool {
 	return true
 }
 
+func testList() {
+
+}
+
 func main() {
 	testSort()
+	testList()
 }

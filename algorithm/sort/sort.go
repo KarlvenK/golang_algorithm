@@ -1,4 +1,4 @@
-package algorithm
+package sort
 
 type Interface interface {
 	Len() int
