@@ -33,7 +33,7 @@ func testSort() {
 	}
 
 	fmt.Println(arr[:30])
-	algorithm.Sort(intSlice(arr))
+	algorithm.Sort(intSlice(arr)) // we do sort here
 
 	if checkSort(arr) {
 		fmt.Println("ok")
