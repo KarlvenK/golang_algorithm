@@ -1,6 +1,6 @@
 package main
 
-import "algorithm/algorithm/test"
+import "algorithm/test"
 
 func main() {
 	test.Sort()
