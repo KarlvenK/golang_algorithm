@@ -3,7 +3,7 @@ package main
 import "algorithm/algorithm/test"
 
 func main() {
-	//test.Sort()
-	//test.List()
+	test.Sort()
+	test.List()
 	test.TryStack()
 }
