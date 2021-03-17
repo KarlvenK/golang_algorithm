@@ -32,6 +32,9 @@ func (s *Stack) Pop() interface{} {
 }
 
 func (s *Stack) Top() interface{} {
+	if s.length == 0 {
+		return nil
+	}
 	return s.data[s.length-1]
 }
 

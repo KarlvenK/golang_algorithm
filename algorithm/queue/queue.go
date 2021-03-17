@@ -38,3 +38,10 @@ func (q *Queue) Pop() interface{} {
 	}
 	return q.data[0]
 }
+
+func (q *Queue) Front() interface{} {
+	if q.lenght == 0 {
+		return nil
+	}
+	return q.data[0]
+}
