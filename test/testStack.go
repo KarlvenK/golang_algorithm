@@ -1,14 +1,14 @@
 package test
 
 import (
-	Stack "algorithm/algorithm/stack"
+	"algorithm/algorithm/stack"
 	"fmt"
 	"math/rand"
 	"time"
 )
 
 func TryStack() {
-	s := Stack.New()
+	s := stack.New()
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 	cont := make([]int, 0)
 	for i := 0; i < 1000000; i++ {
