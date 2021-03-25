@@ -7,4 +7,5 @@ func main() {
 	test.List()
 	test.TryStack()
 	test.Queue()
+	test.Kmp()
 }
