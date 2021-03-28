@@ -1,8 +1,8 @@
 package test
 
 import (
-	"algorithm/algorithm/list"
 	"fmt"
+	"golang_algorithm/algorithm/list"
 )
 
 func List() {

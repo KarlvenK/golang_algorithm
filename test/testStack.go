@@ -1,8 +1,8 @@
 package test
 
 import (
-	"algorithm/algorithm/stack"
 	"fmt"
+	"golang_algorithm/algorithm/stack"
 	"math/rand"
 	"time"
 )

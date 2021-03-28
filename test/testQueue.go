@@ -1,8 +1,8 @@
 package test
 
 import (
-	"algorithm/algorithm/queue"
 	"fmt"
+	"golang_algorithm/algorithm/queue"
 	"math/rand"
 	"time"
 )

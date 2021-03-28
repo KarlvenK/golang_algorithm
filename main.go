@@ -1,6 +1,6 @@
 package main
 
-import "algorithm/test"
+import "golang_algorithm/test"
 
 func main() {
 	test.Sort()

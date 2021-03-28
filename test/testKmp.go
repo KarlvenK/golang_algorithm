@@ -1,9 +1,9 @@
 package test
 
 import (
-	"algorithm/algorithm/myStr"
 	"bytes"
 	"fmt"
+	"golang_algorithm/algorithm/myStr"
 	"math/rand"
 	"time"
 )
