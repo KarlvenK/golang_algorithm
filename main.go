@@ -8,4 +8,5 @@ func main() {
 	test.TryStack()
 	test.Queue()
 	test.Kmp()
+	test.AvlTree()
 }

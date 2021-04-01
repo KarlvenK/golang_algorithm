@@ -167,3 +167,21 @@ func max(a, b int) int {
 	}
 	return b
 }
+
+/*
+// 测试是否平衡
+func (t *AVLTree) Check() bool {
+	return t.root.check()
+}
+
+func (node *Node) check() bool {
+	if node == nil {
+		return true
+	}
+	bf := node.left.getHeight() - node.right.getHeight()
+	if bf > 1 || bf < -1 {
+		return false
+	}
+	return node.left.check() && node.right.check()
+}
+*/
