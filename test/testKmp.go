@@ -46,4 +46,5 @@ func Kmp() {
 		}
 	}
 	fmt.Println("kmp passed the test")
+	printSplitLine()
 }
