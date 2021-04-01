@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"golang_algorithm/algorithm/avlTree"
 	"math/rand"
 	"time"
@@ -35,5 +36,6 @@ func AvlTree() {
 			}*/
 	}
 	tree.DisplayInorder()
+	fmt.Println()
 	printSplitLine()
 }
