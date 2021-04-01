@@ -2,32 +2,46 @@ package avlTree
 
 import "fmt"
 
+const (
+	less = -1
+	more = 1
+	//equal = 0
+)
+
+type Interface interface {
+	Cmp(Interface) int
+}
+
 type Node struct {
 	height      int
 	left, right *Node
 
-	data int
-	key  int
+	data interface{}
+	key  Interface
 }
 
 type AVLTree struct {
 	root *Node
 }
 
-func (t *AVLTree) Add(key, data int) {
+func New() AVLTree {
+	return *new(AVLTree)
+}
+
+func (t *AVLTree) Add(key Interface, data interface{}) {
 	t.root = t.root.add(key, data)
 }
 
-func (t *AVLTree) Remove(key int) {
+func (t *AVLTree) Remove(key Interface) {
 	t.root = t.root.remove(key)
 }
 
-func (t *AVLTree) Update(oldKey, newKey int, newData int) {
+func (t *AVLTree) Update(oldKey, newKey Interface, newData interface{}) {
 	t.root = t.root.remove(oldKey)
 	t.root = t.root.add(newKey, newData)
 }
 
-func (t *AVLTree) Search(key int) (node *Node) {
+func (t *AVLTree) Search(key Interface) (node *Node) {
 	return t.root.search(key)
 }
 
@@ -55,20 +69,20 @@ func (node *Node) getHeight() int {
 	return node.height
 }
 
-func (node *Node) search(key int) *Node {
+func (node *Node) search(key Interface) *Node {
 	if node == nil {
 		return nil
 	}
-	if key < node.key {
+	if key.Cmp(node.key) == less {
 		return node.left.search(key)
 	}
-	if key > node.key {
+	if key.Cmp(node.key) == more {
 		return node.right.search(key)
 	}
 	return node
 }
 
-func (node *Node) add(key int, data int) *Node {
+func (node *Node) add(key Interface, data interface{}) *Node {
 	if node == nil {
 		return &Node{
 			key:    key,
@@ -79,9 +93,9 @@ func (node *Node) add(key int, data int) *Node {
 		}
 	}
 
-	if key < node.key {
+	if key.Cmp(node.key) == less {
 		node.left = node.left.add(key, data)
-	} else if key > node.key {
+	} else if key.Cmp(node.key) == more {
 		node.right = node.right.add(key, data)
 	} else {
 		node.data = data
@@ -89,13 +103,13 @@ func (node *Node) add(key int, data int) *Node {
 	return node.rebalance()
 }
 
-func (node *Node) remove(key int) *Node {
+func (node *Node) remove(key Interface) *Node {
 	if node == nil {
 		return nil
 	}
-	if key < node.key {
+	if key.Cmp(node.key) == less {
 		node.left = node.left.remove(key)
-	} else if key > node.key {
+	} else if key.Cmp(node.key) == more {
 		node.right = node.right.remove(key)
 	} else {
 		if node.left != nil && node.right != nil {
