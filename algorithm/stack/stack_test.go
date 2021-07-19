@@ -1,14 +1,14 @@
-package test
+package stack
 
 import (
 	"fmt"
-	"golang_algorithm/algorithm/stack"
 	"math/rand"
+	"testing"
 	"time"
 )
 
-func TryStack() {
-	s := stack.New()
+func TestStack(tt *testing.T) {
+	s := New()
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 	cont := make([]int, 0)
 	for i := 0; i < 1000000; i++ {
@@ -18,7 +18,7 @@ func TryStack() {
 		} else {
 			if t := s.Pop(); t != nil {
 				if t != cont[len(cont)-1] {
-					fmt.Println("stack failed to pass the test")
+					tt.Fatal("stack failed to pass the test")
 					return
 				} else {
 					cont = cont[:len(cont)-1]
@@ -35,7 +35,4 @@ func TryStack() {
 			cont = cont[:len(cont)-1]
 		}
 	}
-
-	fmt.Println("stack passed the test")
-	printSplitLine()
 }

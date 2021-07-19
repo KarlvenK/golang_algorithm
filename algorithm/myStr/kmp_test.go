@@ -1,10 +1,10 @@
-package test
+package myStr
 
 import (
 	"bytes"
 	"fmt"
-	"golang_algorithm/algorithm/myStr"
 	"math/rand"
+	"testing"
 	"time"
 )
 
@@ -25,7 +25,7 @@ func force(s, t string) int {
 	return -1
 }
 
-func Kmp() {
+func TestKmp(tt *testing.T) {
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 	for i := 0; i < 10000; i++ {
 		var s, t bytes.Buffer
@@ -35,9 +35,9 @@ func Kmp() {
 		for j := 0; j < 10; j++ {
 			t.WriteByte(byte(r.Intn(5)))
 		}
-		a, b := myStr.IndexKmp(s.String(), t.String()), force(s.String(), t.String())
+		a, b := IndexKmp(s.String(), t.String()), force(s.String(), t.String())
 		if a != b {
-			fmt.Println("noooooooooooo")
+			tt.Fatal("noooooooo")
 			return
 		} else {
 			if a != -1 {
@@ -45,6 +45,4 @@ func Kmp() {
 			}
 		}
 	}
-	fmt.Println("kmp passed the test")
-	printSplitLine()
 }

@@ -1,11 +1,12 @@
-package test
+package list
 
 import (
+	"container/list"
 	"fmt"
-	"golang_algorithm/algorithm/list"
+	"testing"
 )
 
-func List() {
+func TestList(t *testing.T) {
 	l := list.New()
 	e4 := l.PushBack(4)
 	e1 := l.PushFront(1)
@@ -14,5 +15,4 @@ func List() {
 	for e := l.Front(); e != nil; e = e.Next() {
 		fmt.Println(e.Value)
 	}
-	printSplitLine()
 }

@@ -1,14 +1,13 @@
-package test
+package queue
 
 import (
-	"fmt"
-	"golang_algorithm/algorithm/queue"
 	"math/rand"
+	"testing"
 	"time"
 )
 
-func Queue() {
-	que := queue.New()
+func TestQueue(t *testing.T) {
+	que := New()
 	cont := make([]int, 0)
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 
@@ -22,12 +21,10 @@ func Queue() {
 				continue
 			}
 			if que.Pop() != cont[0] {
-				fmt.Println("queue failed to pass the test")
+				t.Fatal("queue failed to pass the test")
 				return
 			}
 			cont = cont[1:]
 		}
 	}
-	fmt.Println("queue passed the test")
-	printSplitLine()
 }

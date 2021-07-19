@@ -1,15 +1,15 @@
-package test
+package avlTree
 
 import (
 	"fmt"
-	"golang_algorithm/algorithm/avlTree"
 	"math/rand"
+	"testing"
 	"time"
 )
 
 type class int
 
-func (c class) Cmp(a avlTree.Interface) int {
+func (c class) Cmp(a Interface) int {
 	if c == a.(class) {
 		return 0
 	}
@@ -19,8 +19,8 @@ func (c class) Cmp(a avlTree.Interface) int {
 	return -1
 }
 
-func AvlTree() {
-	tree := avlTree.New()
+func AvlTree(t *testing.T) {
+	tree := New()
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 
 	for i := 0; i < 1000; i++ {
@@ -37,5 +37,8 @@ func AvlTree() {
 	}
 	tree.DisplayInorder()
 	fmt.Println()
-	printSplitLine()
+}
+
+func Test(t *testing.T) {
+	AvlTree(t)
 }

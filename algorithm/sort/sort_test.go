@@ -1,9 +1,10 @@
-package test
+package sort
 
 import (
 	"fmt"
-	"golang_algorithm/algorithm/sort"
 	"math/rand"
+	"sort"
+	"testing"
 	"time"
 )
 
@@ -21,7 +22,7 @@ func (data intSlice) Swap(i, j int) {
 	data[i], data[j] = data[j], data[i]
 }
 
-func Sort() {
+func TestSort(tt *testing.T) {
 	arr := make([]int, 0)
 	r := rand.New(rand.NewSource(time.Now().Unix()))
 
@@ -39,9 +40,8 @@ func Sort() {
 		fmt.Println("ok")
 		fmt.Println(arr[:30])
 	} else {
-		fmt.Println("no")
+		tt.Fatal("noooooooo.")
 	}
-	printSplitLine()
 }
 
 func checkSort(arr intSlice) bool {
